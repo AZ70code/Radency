@@ -1,0 +1,19 @@
+{
+  "name": "radency",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AZ70code/Radency.git"
+  },
+  "author": "Aleksandr Zubov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AZ70code/Radency/issues"
+  },
+  "homepage": "https://github.com/AZ70code/Radency#readme"
+}
