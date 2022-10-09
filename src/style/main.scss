@@ -1,0 +1,100 @@
+@import "~normalize.css";
+@import "~bootstrap/scss/bootstrap";
+
+body {background-color: #f0f0f0;}
+table {
+    box-shadow: 10px 10px 20px #424242;
+}
+thead {
+    background-color: #b4edff;
+}
+.btn {
+    transition: all 0.3s ease;
+}
+button[disabled] {
+    pointer-events: none; 
+    opacity: 0.2;
+}
+#table-note, #archive-note {
+    position: relative;
+    & td:nth-child(4) {
+        font-style: italic;
+    }
+    & td:nth-child(5) {
+        font-weight: 500;
+    }
+    & td:last-child(5) {
+        max-width: 20% !important;
+    }
+    & tr:nth-child(odd) {
+        background-color: #d8d8d8;
+    }
+    & tr:nth-child(even) {
+        background-color: #c9c9c9;
+    }
+}
+#summary {
+    background-color: #c9c9c9;
+    font-weight: 500;
+}
+#create-btn, #archive-btn, #clear-btn, #send-btn {
+    box-shadow: 5px 5px 10px #646464;
+}
+#create-btn:hover, #archive-btn:hover, #clear-btn:hover, #send-btn:hover {
+    box-shadow: 10px 10px 10px #424242;
+}
+
+#table-note {
+    & input {
+        background-color: inherit;
+        border: none;
+        resize: none;
+        border-radius: 3px;
+        padding: 5px;
+    }
+    & input:focus {
+        border: none;
+        outline: 1px solid #999;
+    }
+    & tr.selected {
+        background-color: rgba(158, 240, 236, 0.5);
+    }
+    & textarea {
+        background-color: inherit;
+        border: none;
+        outline: none;
+        resize: none;
+        border-radius: 3px;
+        padding: 5px;
+        width: 100%;
+    }
+}
+
+.btn-edit:hover {
+    box-shadow: -2px -2px 1px #007ae6, 2px 2px 1px #424242;
+    transform: translateY(3px);
+}
+.btn-delete:hover {
+    box-shadow: -2px -2px 1px #d60700, 2px 2px 1px #424242;
+    transform: translateY(3px);
+}
+.btn-archive:hover {
+    box-shadow: -2px -2px 1px #ffb651, 2px 2px 1px #424242;
+    transform: translateY(3px);
+}
+.modal {
+    padding-top: 100px;
+    background-color: rgba(201, 201, 201, 0.5);
+    & form {
+        border-radius: 10px;
+        background-color: rgb(202, 233, 238);
+        box-shadow: 20px 20px 20px #424242;
+        backdrop-filter: blur(15px);
+    }
+}
+.archive-wrapper {
+    display: none;
+   &.opened {
+    display: block;
+   }
+}
