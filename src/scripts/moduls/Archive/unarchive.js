@@ -1,14 +1,20 @@
-import { ARCHIVE_ARRAY, TABLE_NOTE, TABLE } from '../../constans/elements';
+import { TABLE_NOTE } from '../../constans/elements';
+import Http from '../../service/http';
 import { BUTTONS_SERVICE_TEMP } from '../../templates/buttons_service_temp'
-import showTable from '../../views/show_table';
+import createTable from '../TableNote/table';
 
 
-function unarchive(rows) {
-    ARCHIVE_ARRAY.delete(rows.id);
+async function unarchive(rows) {
     rows.remove();
-    let removedRow = TABLE.get(rows.id);
-    removedRow.archived = false;
-    showTable(TABLE_NOTE, BUTTONS_SERVICE_TEMP);
+    let resolve = await Http.get({url: 'TABLE_CONTENT/'+`${rows.id}`});
+    resolve.archived = false;
+    await Http.put({
+        url: 'TABLE_CONTENT/' +`${rows.id}`,
+        body: resolve
+    });
+
+    let arr = await Http.get({url: 'TABLE_CONTENT'})
+    return createTable(arr, TABLE_NOTE, BUTTONS_SERVICE_TEMP);
 }
 
 export default unarchive;

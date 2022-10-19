@@ -1,11 +1,13 @@
 //get note's category
-import { TABLE } from '../../constans/elements';
+import Http from '../../service/http';
 
-function getCategories() {
+async function getCategories() {
     const task = [];
     const thought = [];
     const idea = [];
-    TABLE.forEach((rowObj, key) => {
+
+    let resolve = await Http.get({url: 'TABLE_CONTENT'});
+    resolve.forEach((rowObj) => {
         if(rowObj.category.toLowerCase() === 'task') {
             task.push(rowObj);
         }
@@ -15,7 +17,7 @@ function getCategories() {
         if(rowObj.category.toLowerCase() === 'idea') {
             idea.push(rowObj);
         }
-    });
-    return [task, thought, idea]
+    })
+    return  [task, thought, idea];
 }
 export default getCategories;

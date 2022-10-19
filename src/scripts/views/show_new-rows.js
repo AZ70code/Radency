@@ -1,16 +1,16 @@
-//display start table's rows
+//display table's rows
 import createNotes from '../moduls/TableNote/create_notes';
 import createNote from '../moduls/Modal/modal';
+import Http from '../service/http';
 
 
-function showRows(table, btn) {
+function showNewRows(table, btn) {
     const tableBody = table.querySelector('tbody');
     const tableRow = document.createElement('tr');
     const tableColumnBtn = document.createElement('td');
 
     tableBody.appendChild(tableRow);
-    
-    const [noteKey, noteObj] = createNote();
+    const  noteObj = createNote();
     const newRow = createNotes(noteObj.name, noteObj.category, noteObj.content);
 
     Object.entries(newRow).forEach(([key, value]) => {
@@ -21,6 +21,12 @@ function showRows(table, btn) {
 
     tableColumnBtn.innerHTML = btn;
     tableRow.appendChild(tableColumnBtn);
-    tableRow.id = noteKey;
+    Http.post({
+        url: 'TABLE_CONTENT',
+        body: noteObj
+    })
+    .then(response => {
+        tableRow.id = response.id;
+    })
 }
-export default showRows;
+export default showNewRows;

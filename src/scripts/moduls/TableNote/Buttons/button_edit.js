@@ -1,5 +1,5 @@
 //editor for row's content
-import {TABLE} from '../../../constans/elements';
+import Http from '../../../service/http';
 
 function editContent(rows, btn) {
     rows.classList.add('selected')
@@ -22,11 +22,19 @@ function editContent(rows, btn) {
         tdInput.appendChild(document.createTextNode(input.value));
         rows.cells[4].textContent = input.value.match(/\b\s\d\d[./]\d\d[./]\d\d\b/g);
 
-        let cellEdit = TABLE.get(rows.id);
-        cellEdit.content = input.value;
-        cellEdit.dates = rows.cells[4].textContent;
-        TABLE.set(rows.id, cellEdit);
-        
+        Http.get({url: 'TABLE_CONTENT/'+`${rows.id}`})
+        .then(resolve => {
+            resolve.content = input.value;
+            resolve.dates = rows.cells[4].textContent;
+            return resolve
+        })
+        .then(resolve => {
+            Http.put({
+              url: 'TABLE_CONTENT/' +`${rows.id}`,
+              body: resolve
+            })
+        });
+
         rows.classList.remove('selected');
         btn.removeAttribute('disabled', 'disabled');
     });

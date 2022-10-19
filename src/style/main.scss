@@ -23,9 +23,6 @@ button[disabled] {
     & td:nth-child(5) {
         font-weight: 500;
     }
-    & td:last-child(5) {
-        max-width: 20% !important;
-    }
     & tr:nth-child(odd) {
         background-color: #d8d8d8;
     }
@@ -72,15 +69,15 @@ button[disabled] {
 
 .btn-edit:hover {
     box-shadow: -2px -2px 1px #007ae6, 2px 2px 1px #424242;
-    transform: translateY(3px);
+    transform: translateY(2px);
 }
 .btn-delete:hover {
     box-shadow: -2px -2px 1px #d60700, 2px 2px 1px #424242;
-    transform: translateY(3px);
+    transform: translateY(2px);
 }
 .btn-archive:hover {
     box-shadow: -2px -2px 1px #ffb651, 2px 2px 1px #424242;
-    transform: translateY(3px);
+    transform: translateY(2px);
 }
 .modal {
     padding-top: 100px;
@@ -97,4 +94,7 @@ button[disabled] {
    &.opened {
     display: block;
    }
+}
+h2, h3 {
+    text-shadow: 2px 2px 5px #424242;
 }

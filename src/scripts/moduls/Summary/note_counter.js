@@ -2,11 +2,10 @@
 function noteCounter(category) {
     let archivedCount = 0;
     let activeCount = 0;
-
-    for(let item of category) {
-        if(item.archived === false) activeCount++;
-        if(item.archived === true) archivedCount++;
+    for(let obj of category) {
+        if(obj.archived === false) activeCount++;
+        if(obj.archived === true) archivedCount++;
     }
-return [activeCount, archivedCount];
+    return [activeCount, archivedCount];
 }
 export default noteCounter;

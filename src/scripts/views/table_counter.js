@@ -3,12 +3,11 @@ import { TABLE_SUMMARY } from "../constans/elements";
 import getCategories from "../moduls/Summary/categories";
 import noteCounter from "../moduls/Summary/note_counter";
 
-function showCounts() {
+async  function showCounts() {
     const taskRow = TABLE_SUMMARY.querySelector('#row-task');
     const throughtRow = TABLE_SUMMARY.querySelector('#row-thought');
     const ideaRow = TABLE_SUMMARY.querySelector('#row-idea');
-
-    let [task, thought, idea] = getCategories();
+    let [task, thought, idea] = await getCategories();
     let taskCount = noteCounter(task);
     let thoughtCount = noteCounter(thought);
     let ideaCount = noteCounter(idea);

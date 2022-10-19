@@ -1,10 +1,16 @@
 //delete archived rows from table note
-import { TABLE } from "../../../constans/elements";
+import Http from "../../../service/http";
+import showArchiveTable from "../../Archive/show_archive-table";
+import showCounts from "../../../views/table_counter";
 
-function archiveRows(rows) {
-    let archivedRow =  TABLE.get(rows.id);
+async function archiveRows(rows) {
     rows.remove();
-    archivedRow.archived = true;
-    TABLE.set(rows.id, archivedRow);
+    let getObjRow =  await Http.get({url: 'TABLE_CONTENT/'+`${rows.id}`})
+    getObjRow.archived = true;
+    await Http.put({
+        url: 'TABLE_CONTENT/' +`${rows.id}`,
+        body: getObjRow
+    });
+    await showArchiveTable();
 }
 export default archiveRows;

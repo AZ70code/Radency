@@ -1,9 +1,9 @@
 //remove deleted row from table note
-import { TABLE } from "../../../constans/elements";
+import Http from "../../../service/http";
 
 function deleteRow(rows) {
-    TABLE.delete(rows.id);
     rows.remove();
-    return TABLE;
+    Http.delete({url: 'TABLE_CONTENT/'+`${rows.id}`,
+    });
 }
 export default deleteRow;

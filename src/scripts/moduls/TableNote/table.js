@@ -1,14 +1,32 @@
-//create table notes collection
+//create table notes
 import createNotes from  './create_notes';
-import {TABLE} from '../../constans/elements';
+import addCell from './table_cell';
 
-function createTable (arr) {
-    
-    arr.forEach((obj, i) => {
+function createTable (arr, table, btn) {
+    const tableBody = table.querySelector('tbody');
+    tableBody.innerHTML = '';
+    let archiveStatus;
+    if(table.id === 'table-note') archiveStatus = false;
+    if(table.id === 'archive-note') archiveStatus = true;
+
+    arr.forEach((obj) => {
         let objRow = createNotes(obj.name, obj.category, obj.content);
         objRow.archived = obj.archived;
-        let key = TABLE.size.toString();
-        TABLE.set(key, objRow);
+        if(obj.archived === archiveStatus) {
+            const tableRow = document.createElement('tr');
+            tableBody.appendChild(tableRow);
+            addCell(tableRow, obj.name);
+            addCell(tableRow, obj.created);
+            addCell(tableRow, obj.category);
+            addCell(tableRow, obj.content);
+            addCell(tableRow, objRow.dates);
+            tableRow.id = obj.id;
+    
+            const tableColumnBtn = document.createElement('td');
+            tableColumnBtn.innerHTML = btn;
+            tableRow.appendChild(tableColumnBtn);
+        }
     })
+    return tableBody;
 }
 export default createTable;
