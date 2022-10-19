@@ -1,19 +1,56 @@
 {
-  "name": "radency",
+  "name": "az70",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "concurrently \"npm run server\" \"npm run start\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": " webpack serve",
+    "server": "json-server -w server/db.json -p 3001"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AZ70code/Radency.git"
+    "url": "git+https://github.com/AZ70code/Todo-app.git"
   },
   "author": "Aleksandr Zubov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AZ70code/Radency/issues"
+    "url": "https://github.com/AZ70code/Todo-app/issues"
   },
-  "homepage": "https://github.com/AZ70code/Radency#readme"
+  "homepage": "https://github.com/AZ70code/Todo-app#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "autoprefixer": "^10.4.11",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "concurrently": "^7.4.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^3.4.1",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "html-webpack-plugin": "^5.5.0",
+    "json-server": "^0.17.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss": "^8.4.13",
+    "postcss-loader": "^6.2.1",
+    "prettier": "2.6.2",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "bootstrap": "^5.2.1",
+    "bootstrap-icons": "^1.9.1",
+    "normalize.css": "^8.0.1"
+  }
 }
